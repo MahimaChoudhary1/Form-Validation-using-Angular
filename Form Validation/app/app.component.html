@@ -1,0 +1,299 @@
+<div class="wrapper">
+  <div class="container" style="background-color: #eeeeee; margin-top: 20px">
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+    <div class="container">
+      <section class="vh-50 gradient-custom">
+        <div class="container py-5 h-50">
+          <div class="row justify-content-center align-items-center h-50">
+            <div class="col-12 col-lg-9 col-xl-7">
+              <div
+                class="card shadow-2-strong card-registration"
+                style="
+                  border-radius: 15px;
+                  margin-top: 70px;
+                  margin-bottom: 70px;
+                "
+              >
+                <div class="card-body p-4 p-md-5">
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                  <form
+                    [formGroup]="registrationForm"
+                    (ngSubmit)="submitForm(registrationForm.value)"
+                  >
+                    <div class="row">
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <label class="form-label" for="firstName"
+                            >First Name</label
+                          >
+                          <input
+                            formControlName="firstName"
+                            type="text"
+                            id="firstName"
+                            class="form-control form-control-lg"
+                          />
+                          <div
+                            [ngClass]="'alert'"
+                            *ngIf="
+                              submittedForm ||
+                              (firstName.invalid && firstName.dirty) ||
+                              firstName.touched
+                            "
+                          >
+                            
+                            <div
+                              [ngClass]="'alert'"
+                              *ngIf="firstName.errors?.['required']"
+                            >
+                              Field is required.
+                            </div>
+                            <div
+                              [ngClass]="'alert'"
+                              *ngIf="firstName.errors?.['minlength']||firstName.errors?.['maxlength']||firstName.errors?.['pattern']"
+                            >
+                             Please Enter Valid Format.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <label class="form-label" for="lastName"
+                            >Last Name</label
+                          >
+
+                          <input
+                            formControlName="lastName"
+                            type="text"
+                            id="lastName"
+                            class="form-control form-control-lg"
+                          />
+                          <div
+                            [ngClass]="'alert'"
+                            *ngIf="
+                              submittedForm ||
+                              (lastName.invalid && lastName.dirty) ||
+                              lastName.touched
+                            "
+                          >
+                            <div
+                              [ngClass]="'alert'"
+                              *ngIf="lastName.errors?.['required']"
+                            >
+                              Field is required.
+                            </div>
+                            <div
+                              [ngClass]="'alert'"
+                              *ngIf="lastName.errors?.['minlength']||lastName.errors?.['maxlength']||lastName.errors?.['pattern']"
+                            >
+                            Please Enter Valid Format.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 d-flex align-items-center">
+                        <div class="form-outline datepicker w-100">
+                          <label for="birthdayDate" class="form-label"
+                            >Birthday</label
+                          >
+
+                          <input
+                            formControlName="birthdayDate"
+                            type="date"
+                            class="form-control form-control-lg"
+                            id="birthdayDate"
+                          />
+                          <div
+                            [ngClass]="'alert'"
+                            *ngIf="
+                              submittedForm ||
+                              (birthdayDate.invalid && birthdayDate.dirty) ||
+                              birthdayDate.touched
+                            "
+                          >
+                            <div
+                              [ngClass]="'alert'"
+                              *ngIf="birthdayDate.errors?.['required']"
+                            >
+                              Field is required.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4">
+                        <h6 class="mb-2 pb-1">Gender</h6>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label" for="maleGender"
+                            >Male</label
+                          >
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="inlineRadioOptions"
+                            id="maleGender"
+                            value="option2"
+                            formControlName="inlineRadioOptions"
+                          />
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <label class="form-check-label" for="femaleGender"
+                            >Female</label
+                          >
+
+                          <input
+                            formControlName="inlineRadioOptions"
+                            class="form-check-input"
+                            type="radio"
+                            name="inlineRadioOptions"
+                            id="femaleGender"
+                            value="option1"
+                            checked
+                          />
+                        </div>
+                        <div
+                          [ngClass]="'alert'"
+                          *ngIf="
+                            submittedForm ||
+                            (inlineRadioOptions.invalid &&
+                              inlineRadioOptions.dirty) ||
+                            inlineRadioOptions.touched
+                          "
+                        >
+                          <div
+                            [ngClass]="'alert'"
+                            *ngIf="inlineRadioOptions.errors?.['required']"
+                          >
+                            Field is required.
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <label class="form-label" for="email">Email</label>
+
+                          <input
+                            formControlName="email"
+                            type="email"
+                            id="email"
+                            class="form-control form-control-lg"
+                          />
+                          <div
+                            [ngClass]="'alert'"
+                            *ngIf="
+                              submittedForm ||
+                              (email.invalid && email.dirty) ||
+                              email.touched
+                            "
+                          >
+                            <div
+                              [ngClass]="'alert'"
+                              *ngIf="email.errors?.['required']"
+                            >
+                              Field is required.
+                            </div>
+                            <div
+                              [ngClass]="'alert'"
+                              *ngIf="email.errors?.['pattern']"
+                            >
+                              Please Enter Valid Email.
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                          <label class="form-label" for="phoneNumber"
+                            >Phone Number</label
+                          >
+
+                          <input
+                            formControlName="phoneNumber"
+                            type="tel"
+                            id="phoneNumber"
+                            class="form-control form-control-lg"
+                          />
+
+                          <div
+                            [ngClass]="'alert'"
+                            *ngIf="
+                              submittedForm ||
+                              (phoneNumber.invalid && phoneNumber.dirty) ||
+                              phoneNumber.touched
+                            "
+                          >
+                            <div
+                              [ngClass]="'alert'"
+                              *ngIf="phoneNumber.errors?.['required']"
+                            >
+                              Field is required.
+                            </div>
+                            <div
+                              [ngClass]="'alert'"
+                              *ngIf="phoneNumber.errors?.['pattern']"
+                            >
+                              Please Enter Valid Phone Number.
+                            </div>
+                           
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-12">
+                        <label class="form-label select-label">Subject</label>
+
+                        <select
+                          formControlName="choose"
+                          class="select form-control-lg form-control form-select"
+                        >
+                          <option value="1" disabled>Choose option</option>
+                          <option value="2">Subscription 1</option>
+                          <option value="3">Subscription 2</option>
+                          <option value="4">Subscription 3</option>
+                          <option value="4">Subscription 4</option>
+                        </select>
+                      </div>
+                      <div
+                        [ngClass]="'alert'"
+                        *ngIf="
+                          submittedForm ||
+                          (choose.invalid && choose.dirty) ||
+                          choose.touched
+                        "
+                      >
+                        <div
+                          [ngClass]="'alert'"
+                          *ngIf="choose.errors?.['required']"
+                        >
+                          Field is required.
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mt-4 pt-2">
+                      <input
+                        class="btn btn-primary btn-lg"
+                        (click)="onSubmit()"
+                        type="submit"
+                        value="Submit"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <app-footer></app-footer>
+  </div>
+</div>

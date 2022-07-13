@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "firstName": "mahima",
+      "lastName": "mahima",
+      "birthdayDate": "2022-03-17",
+      "email": "mahima@gmail.com",
+      "phoneNumber": "9898989899",
+      "inlineRadioOptions": "option2",
+      "choose": "4",
+      "id": 1
+    }
+  ]
+}
